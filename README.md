@@ -1,2 +1,2 @@
-# mere
-The Mere Programming Language - nothing more than a simple, pure and familiar programming language
+# The Mere Programming Language
+Nothing more than a simple, pure and familiar programming language.
