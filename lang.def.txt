@@ -1,0 +1,64 @@
+LANGUAGE DEFINITION DOCUMENT
+
+
+
+// comments will be represented by two backslashes
+
+
+
+let num = 10
+
+let str = "string"
+
+let bool = true
+
+
+
+func main()
+    print "hello world"
+    return nil
+end
+
+
+
+if (1 > 2)
+    return false
+else if (1 < 2)
+    return true
+else
+    break
+end
+
+
+
+let counter = 0
+
+while (counter < 10)
+    counter = counter + 1
+end
+
+
+
+arithmetic operators:
+    +
+    -
+    *
+    /
+    %
+
+
+
+boolean operators:
+    ==
+    !=
+    <=
+    >=
+    <
+    >
+
+
+
+logical operators:
+    &&
+    ||
+    !
