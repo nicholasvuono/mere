@@ -4,38 +4,43 @@ const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
 
-	//Identifiers + literals
-	IDENTIFIER = "IDENTIFIER" //add, foo, bar, x, y, etc.
-	NUMBER     = "NUMBER"     // 11234412
-	STRING     = "STRING"
-	BOOLEAN    = "BOOLEAN"
+	// Identifiers + literals
+	IDENT  = "IDENT" // add, foobar, x, y, ...
+	INT    = "INT"   // 1343456
+	STRING = "STRING"
 
-	//Operators
+	// Operators
 	ASSIGN   = "="
 	PLUS     = "+"
 	MINUS    = "-"
-	MULTIPLY = "*"
-	DIVIDE   = "/"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
 
-	LESS_THAN    = "<"
-	GREATER_THAN = ">"
+	LT = "<"
+	GT = ">"
 
-	EQUALS    = "=="
-	NOT_EQUAL = "!="
+	EQ     = "=="
+	NOT_EQ = "!="
 
-	//Delimiters
-	LEFT_PARENTHESIS  = "("
-	RIGHT_PARENTHESIS = ")"
+	// Delimiters
+	COMMA     = ","
+	SEMICOLON = ";"
+	LPAREN    = "("
+	RPAREN    = ")"
+	LBRACE    = "{"
+	RBRACE    = "}"
+	LBRAKET   = "["
+	RBRAKET   = "]"
+	COLON     = ":"
 
-	//Keywords
+	// Keywords
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
 	TRUE     = "TRUE"
 	FALSE    = "FALSE"
 	IF       = "IF"
-	ELSEIF   = "ELSEIF"
 	ELSE     = "ELSE"
-	WHILE    = "WHILE"
 	RETURN   = "RETURN"
 )
 
@@ -47,20 +52,19 @@ type Token struct {
 }
 
 var keywords = map[string]TokenType{
-	"func":    FUNCTION,
-	"let":     LET,
-	"true":    TRUE,
-	"false":   FALSE,
-	"if":      IF,
-	"else if": ELSEIF,
-	"else":    ELSE,
-	"while":   WHILE,
-	"return":  RETURN,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
+	"return": RETURN,
 }
 
-func LookupIdentifier(identifier string) TokenType {
-	if token, ok := keywords[identifier]; ok {
-		return token
+func LookupIdent(ident string) TokenType {
+	if tok, ok := keywords[ident]; ok {
+		return tok
 	}
-	return IDENTIFIER
+
+	return IDENT
 }
