@@ -4,67 +4,42 @@ const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
 
-	// Identifiers + literals
-	IDENT  = "IDENT" // add, foobar, x, y, ...
-	INT    = "INT"   // 1343456
-	STRING = "STRING"
+	IDENT = "IDENT"
+	NUM   = "NUM"
+	STR   = "STR"
+	BOOL  = "BOOL"
 
-	// Operators
-	ASSIGN   = "="
-	PLUS     = "+"
-	MINUS    = "-"
-	BANG     = "!"
-	ASTERISK = "*"
-	SLASH    = "/"
+	ASSIGN = "="
 
-	LT = "<"
-	GT = ">"
+	LBRCK = "LBRCK"
+	RBRCK = "RBRCK"
 
-	EQ     = "=="
-	NOT_EQ = "!="
-
-	// Delimiters
-	COMMA     = ","
-	SEMICOLON = ";"
-	LPAREN    = "("
-	RPAREN    = ")"
-	LBRACE    = "{"
-	RBRACE    = "}"
-	LBRAKET   = "["
-	RBRAKET   = "]"
-	COLON     = ":"
-
-	// Keywords
-	FUNCTION = "FUNCTION"
-	LET      = "LET"
-	TRUE     = "TRUE"
-	FALSE    = "FALSE"
-	IF       = "IF"
-	ELSE     = "ELSE"
-	RETURN   = "RETURN"
+	LET    = "LET"
+	TRUE   = "TRUE"
+	FALSE  = "FALSE"
+	FUNC   = "FUNC"
+	END    = "END"
+	RETURN = "RETURN"
 )
 
-type TokenType string
-
 type Token struct {
-	Type    TokenType
+	Type    string
 	Literal string
 }
 
-var keywords = map[string]TokenType{
-	"fn":     FUNCTION,
+var keywords = map[string]string{
 	"let":    LET,
 	"true":   TRUE,
 	"false":  FALSE,
-	"if":     IF,
-	"else":   ELSE,
+	"func":   FUNC,
+	"end":    END,
 	"return": RETURN,
 }
 
-func LookupIdent(ident string) TokenType {
-	if tok, ok := keywords[ident]; ok {
-		return tok
+func Lookup(ident string) string {
+	token, bool := keywords[ident]
+	if bool {
+		return token
 	}
-
 	return IDENT
 }
