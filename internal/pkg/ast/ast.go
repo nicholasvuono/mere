@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/mmyoji/go-monkey/token"
+	"github.com/nicholasvuono/mere/internal/pkg/token"
 )
 
 type Node interface {
